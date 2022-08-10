@@ -6,9 +6,10 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
         <ul className={styles.itemContainer}>
             {options.map(option => {
                 return (
-                    <li key={option} className={styles.item}>
+                    <li key={option}>
                         <button type="button"
                             onClick={onLeaveFeedback}
+                            className={styles.item}
                                >
                             {option}
                         </button>
@@ -20,7 +21,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 }
 
 FeedbackOptions.propTypes = {
-    options: PropTypes.array.isRequired,
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
     onLeaveFeedback: PropTypes.func.isRequired,
 }
 

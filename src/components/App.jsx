@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Section  from "./Section/Section";
 import Statistics  from "./Statistics/Statistics";
 import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
+import Container from "./Container/Container";
 
 class App extends Component {
   state = {
@@ -29,10 +30,15 @@ class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     return (
-      <Section title="Please leave feedback">
-        <FeedbackOptions options={['Good', 'Neutral', 'Bad']} onLeaveFeedback={this.onLeaveFeedback} />
+      <Container>
+      <Section title={'Please leave feedback'}>
+        <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.onLeaveFeedback} />
+        </Section>
+      <Section>
         <Statistics good={good} neutral={neutral} bad={bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />
-      </Section>
+        </Section>
+        </Container>
+      
     )
   }
 }
